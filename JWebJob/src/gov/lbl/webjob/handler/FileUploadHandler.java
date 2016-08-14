@@ -161,10 +161,9 @@ public class FileUploadHandler extends HttpServlet {
                         //otherwise make another JSON document with info about the error
                         	jsono.put("name", item.getName());
                         	jsono.put("size", item.getSize());
-                        	jsono.put("url", "UploadFile?getfile=" + item.getName());
-                        	jsono.put("delete_url", "UploadFile?delfile=" + item.getName());
+                        	jsono.put("url", this.getClass().getSimpleName()+"?getfile=" + item.getName());
+                        	jsono.put("delete_url", this.getClass().getSimpleName()+"?delfile=" + item.getName());
                         	jsono.put("delete_type", "GET");
-                        	
                         	
                         	/* Add string representation of upload error
                             Properties properties = new Properties();
