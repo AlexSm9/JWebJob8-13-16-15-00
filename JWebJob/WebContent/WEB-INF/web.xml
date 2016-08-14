@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>JWebJob</display-name>
-  <!--welcome-file-list>
-    <welcome-file>InputPage</welcome-file>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list-->
-  
-<servlet>
-	<servlet-name>InputPage</servlet-name>
-	<servlet-class>gov.lbl.webjob.vc.JobInputVC</servlet-class>
-</servlet>
- 
-<servlet-mapping>
-	<servlet-name>InputPage</servlet-name>
-	<url-pattern></url-pattern>
-</servlet-mapping>
-
-<env-entry> 
+  <servlet>
+    <servlet-name>InputPage</servlet-name>
+    <servlet-class>gov.lbl.webjob.vc.JobInputVC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InputPage</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <env-entry>
     <env-entry-name>mongoPath</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>localhost:27017</env-entry-value>
-</env-entry>
-<env-entry> 
+  </env-entry>
+  <env-entry>
     <env-entry-name>dbName</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>pgpDatabase</env-entry-value>
-</env-entry>
-  
+  </env-entry>
+  <context-param>
+    <description>Location to store uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
+         /Users/Alex/Desktop/Code/urFiles/
+     </param-value>
+  </context-param>
 </web-app>

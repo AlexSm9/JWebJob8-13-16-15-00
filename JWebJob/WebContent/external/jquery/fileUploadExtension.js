@@ -1,5 +1,7 @@
 $(function(){
 
+    $("#upload").find("input").hide();
+	
     var container = $('#upload div#content');
 
     $('#drop a').click(function(){
@@ -36,7 +38,8 @@ $(function(){
             data.context = tpl.appendTo(container);
 
             // Initialize the knob plugin
-            tpl.find('input').knob();
+            //tpl.find('input').knob();
+            tpl.find('input').hide();
 
             // Listen for clicks on the cancel icon
             tpl.find('span').click(function(){
@@ -48,7 +51,8 @@ $(function(){
                 tpl.fadeOut(function(){
                     tpl.remove();
                 });
-
+   
+                
             });
 
             // Automatically upload the file once it is added to the queue
@@ -96,7 +100,7 @@ $(function(){
             
             data.context.removeClass('working');
             
-            fileFieldValidator();
+            //fileFieldValidator();
 
             //Below function does not account for non-existent data.result[0], placed 'jsono.put("error", 0);' in UploadFile json output to fix
             if(data.result[0].error != 0){	
@@ -134,5 +138,5 @@ $(function(){
 
         return (bytes / 1000).toFixed(2) + ' KB';
     }
-
+    
 });

@@ -12,6 +12,11 @@ import org.bson.types.ObjectId;
  */
 public class Util {
 
+	/**
+	 * Creates a unique UUID.
+	 * @return randomUUID().toString()
+	 * @see Java Documentation: <a target="_top" href="http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html">UUID<a>
+	 */
 	public static String genStringUUID(){
 		return UUID.randomUUID().toString();
 	}
@@ -27,6 +32,11 @@ public class Util {
 	    return dateNow;
 	}
 	
+	/**
+	 * Creates a String representation of a unique ObjectId.
+	 * @return ObjectId.toString()
+	 * @see MongoDB Reference: <a target="_top" href="https://docs.mongodb.com/manual/reference/method/ObjectId/">ObjectId</a>
+	 */
 	public static String genStringObjectId(){
 		return new ObjectId().toString();
 	}

@@ -15,7 +15,7 @@
 <title>Job Input</title>
 <!-- \\ -->
 <!-- Javascript and Stylesheet -->
-<script type="text/javascript" src="<c:url value="js/JobInput.js" />" defer></script><!-- defer loads the script after page has loaded -->
+<script type="text/javascript" src="<c:url value="js/JobInput.js" />"></script>
 <link href="<c:url value="css/JobInput.css" />" rel="stylesheet">
 <!-- // -->
 </head>
@@ -35,6 +35,46 @@
 			</tr>
 			<br>
 		</c:forEach>
+	</div>
+	
+	<br>
+	
+	<div id="fileUploadDiv">
+		<div id="fileUploadErrorDisplayDiv">
+			<div class="ui-widget" id="errorFile">
+    			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+        		<p>
+            		<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+            		<strong>Upload Error</strong>
+            		<span id="errorFileText">
+        	    	
+        	    	</span>
+        		</p>
+    			</div>
+			</div>
+		</div>
+		<form id="upload" method="post" action="FileUploadHandler" enctype="multipart/form-data">
+			<div id="drop">				
+				<a>✚ Select File to Upload</a>
+				<input type="file" name="upl"/><!-- Removed Multiple -->
+			</div>
+			<div class="ui-corner-all  ui-widget-content" id="content" style="display:none; padding:15px 15px 0px 10px">
+				<div style="float:left; width:100px">X</div>
+				<div class="fileName" style="float:left"></div>
+				<div style="float:right; width:16px">
+					<span>
+						<button class="deleteButton" data-url="" onclick="deleteFile(); return false" >
+							<span class="ui-icon ui-icon-trash"></span>
+						</button>
+					</span>
+				</div>
+				<div class="fileSize" style="float:right; width:110px; text-align:center">Sz</div>
+				<div style="clear:both"></div>
+			</div>			
+			<div id="progressbar" style="display:none">
+			
+			</div>
+		</form>
 	</div>
 	
 	<br>
@@ -68,12 +108,13 @@
 				<div class="interactiveContent">
 					<div id="button2Div">
 						<button type="button" id="button2" class="simpleButton">Click to show Dialog</button>
-						<input id="dialogSelection" name="dialogSelection" type="text" value=""> <!-- change type to hidden later -->
+						<input id="dialogSelection" name="dialogSelection" type="hidden" value=""> <!-- change type to hidden later -->
 					</div>
 				</div>
 				<div class="interactiveContent">
 					<div id="submitdiv">
-						<button id= submitButton class="simpleButton" type="submit" value="Submit">
+						<input type="hidden" id="fileNameParameter" name="fileName" value="null">
+						<button id="submitButton" class="simpleButton" type="submit" value="Submit">
 							Submit this Form!
 						</button>
 					</div>
