@@ -165,19 +165,27 @@ public class FileUploadHandler extends HttpServlet {
                         	jsono.put("delete_url", this.getClass().getSimpleName()+"?delfile=" + item.getName());
                         	jsono.put("delete_type", "GET");
                         	
-                        	/* Add string representation of upload error
+//                        	/* Add string representation of upload error.
                             Properties properties = new Properties();
                     		InputStream input = getServletContext().getResourceAsStream("/WEB-INF/config.properties");
                     		properties.load(input);
                     		input.close();
                     		prop = properties;
-                        	ArrayList<Integer> errorCodeList = //ERRORS IN CODE FROM ;
-                        	ArrayList<String> errorStringList = new ArrayList<String>();
+                        	ArrayList<Integer> errorCodeList = prep.errorCodes;//ERRORS IN CODE FROM ANALYSIS
+                        	StringBuffer errorHtml = new StringBuffer();
+                        	errorHtml.append("<br>");
+                        	errorHtml.append("<table id='errorTable'>" + "\n");
+                        	errorHtml.append("<tr class='errorTableRow'>" + "\n");
                         	for(int i = 0; i<errorCodeList.size(); i++){
-                        		errorStringList.add(prop.getProperty(String.valueOf(errorCodeList.get(i))));
+                        		errorHtml.append("<br>" + "\n");
+                        		errorHtml.append("<td class='errorTableCol'>" + "\n");
+                        		errorHtml.append(prop.getProperty(String.valueOf(errorCodeList.get(i))) + "\n");
+                        		errorHtml.append("</td>" + "\n");
                         	}
-                        	jsono.put("error", );
-                        	*/
+                        	errorHtml.append("</tr>" + "\n");
+                        	errorHtml.append("</table>" + "\n");
+                        	jsono.put("error", errorHtml.toString());
+//                        	*/
                         	
                         }
                         json.put(jsono);

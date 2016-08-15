@@ -102,11 +102,13 @@ $(function(){
             
             //fileFieldValidator();
 
-            //Below function does not account for non-existent data.result[0], placed 'jsono.put("error", 0);' in UploadFile json output to fix
+            //Below function does not account for non-existent data.result[0], placed 'jsono.put("error", 0);' in FileUploadHandler json output to fix
             if(data.result[0].error != 0){	
             	//alert(data.result[0].error);
             		$("#errorFile").show();
-            		$("#errorFileText").text(data.result[0].error);
+            		
+            		$("#errorFileText").html(data.result[0].error);
+
             		$("#errorText").hide()
             		$("#sbmt").attr('disabled', 'disabled');
             	//moved this if down from the top of the done function, may cause unintentional errors.

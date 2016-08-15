@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Preparor {
 	
-	public int errorCode = 0;
+	public ArrayList<Integer> errorCodes = new ArrayList<Integer>();
 	private String sequence = null;
 	
 	public boolean extractFile(File fi) throws FileNotFoundException{
 		boolean hasError = false;
 		StringBuffer sb = new StringBuffer();
 		if((getSuffix(fi.getPath())).compareTo("gbff") != 0){
-	    	errorCode = 1001;
+	    	errorCodes.add(1001);
 	    	hasError = true;
 	    }else{
 		    boolean originFound = false;
@@ -32,13 +32,13 @@ public class Preparor {
 	    		while(!sc.hasNext("//")){		
 	    			sb.append(sc.nextLine());
 	    			if (sc.hasNextLine() == false){
-	    				errorCode = 1003;
+	    				errorCodes.add(1003);
 	    				hasError = true;
 	    				break;
 	    			}
 	    		}
 	    	}else{
-	    		errorCode = 1002;
+	    		errorCodes.add(1002);
 	    		hasError = true;
 	    	}
 	    	sc.close();
@@ -65,10 +65,10 @@ public class Preparor {
 				resetErrors();
 				return true;
 			}else{
-				errorCode = 1005;
+				errorCodes.add(1005);
 			}
 		}else{
-			errorCode = 1004;
+			errorCodes.add(1004);
 		}
 		return false;
 	}
@@ -80,7 +80,7 @@ public class Preparor {
 	//PRIVATE___________________________
 	
 	private void resetErrors(){
-		errorCode = 0;
+		errorCodes = new ArrayList<Integer>();
 	}
 	
 	private String getSuffix(String filename) {
