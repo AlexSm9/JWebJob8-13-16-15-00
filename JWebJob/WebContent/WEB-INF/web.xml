@@ -23,7 +23,7 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-         /Users/Alex/Desktop/Code/urFiles/
+         /tmp
      </param-value>
   </context-param>
 </web-app>
