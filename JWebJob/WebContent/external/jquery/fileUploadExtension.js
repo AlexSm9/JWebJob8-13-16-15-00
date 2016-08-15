@@ -25,35 +25,40 @@ $(function(){
         	document.getElementById('drop').style.display = 'none';
         	document.getElementById('progressbar').style.display = 'block';
         	
-            var tpl = $('<div class="working"><input data-width="0" data-height="0"><p></p><span></span></div>');
-
-            // Append the file name and file size
-            //tpl.find('p').text(data.files[0].name);
-                         
-            $('#content .fileName').text(data.files[0].name);
-            
-            $('#content .fileSize').text(formatFileSize(data.files[0].size));
-
-            // Add the HTML to the UL element
-            data.context = tpl.appendTo(container);
-
-            // Initialize the knob plugin
-            //tpl.find('input').knob();
-            tpl.find('input').hide();
-
-            // Listen for clicks on the cancel icon
-            tpl.find('span').click(function(){
-
-                if(tpl.hasClass('working')){
-                    jqXHR.abort();
-                }
-
-                tpl.fadeOut(function(){
-                    tpl.remove();
-                });
-   
+        	
+        	console.log( $( ".working input" ).length);
+        	if (!  $( ".working input" ).length ) {
+        	
+	            var tpl = $('<div class="working"><input data-width="0" data-height="0"><span></span></div>');
+	
+	            // Append the file name and file size
+	            //tpl.find('p').text(data.files[0].name);
+	                         
+	            $('#content .fileName').text(data.files[0].name);
+	            
+	            $('#content .fileSize').text(formatFileSize(data.files[0].size));
+	
+	            // Add the HTML to the UL element
+	            data.context = tpl.appendTo(container);
+	
+	            // Initialize the knob plugin
+	            //tpl.find('input').knob();
+	            tpl.find('input').hide();
+	
+	            // Listen for clicks on the cancel icon
+	            tpl.find('span').click(function(){
+	
+	                if(tpl.hasClass('working')){
+	                    jqXHR.abort();
+	                }
+	
+	                tpl.fadeOut(function(){
+	                    tpl.remove();
+	                });
+	            
                 
-            });
+	            });
+        	}
 
             // Automatically upload the file once it is added to the queue
             var jqXHR = data.submit();
